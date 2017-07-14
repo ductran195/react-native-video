@@ -90,11 +90,11 @@ static NSString *const timedMetadata = @"timedMetadata";
 
 - (AVPlayerViewController*)createPlayerViewController:(AVPlayer*)player withPlayerItem:(AVPlayerItem*)playerItem {
     RCTVideoPlayerViewController* playerLayer= [[RCTVideoPlayerViewController alloc] init];
-    playerLayer.showsPlaybackControls = NO;
+    playerLayer.showsPlaybackControls = YES;
     playerLayer.rctDelegate = self;
-    playerLayer.view.frame = self.bounds;
+//    playerLayer.view.frame = self.bounds;
     playerLayer.player = _player;
-    playerLayer.view.frame = self.bounds;
+//    playerLayer.view.frame = self.bounds;
     return playerLayer;
 }
 
@@ -668,6 +668,8 @@ static NSString *const timedMetadata = @"timedMetadata";
         // resize mode must be set before subview is added
         [self setResizeMode:_resizeMode];
         [self addSubview:_playerViewController.view];
+        
+        [_player play];
     }
 }
 
